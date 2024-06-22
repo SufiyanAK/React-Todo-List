@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 function Todo() {
 
-    const [task, setTask] = useState(['DCCN Theory Assignment']);
+    const [task, setTask] = useState([]);
     const [newTask, setNewTask] = useState('');
 
     function handleInputChange(e) {
@@ -10,17 +10,35 @@ function Todo() {
     }
 
     function addTask() {
+
+        if (newTask.trim() !== '') {
+            setTask(t => [...t, newTask]);
+            setNewTask('')
+        }
+
     }
 
     function deleteTask(index) {
-
+        const updatedTask = task.filter((_, i) => i !== index);
+        setTask(updatedTask)
     }
 
-    function moveTaskUp() {
+    function moveTaskUp(index) {
+        if (index > 0) {
+            const updatedTask = [...task];
+            [updatedTask[index], updatedTask[index - 1]] = [updatedTask[index - 1], updatedTask[index]]
 
+            setTask(updatedTask);
+        }
     }
 
-    function moveTaskDown() {
+    function moveTaskDown(index) {
+        if (index < task.length - 1) {
+            const updatedTask = [...task];
+            [updatedTask[index], updatedTask[index + 1]] = [updatedTask[index + 1], updatedTask[index]]
+
+            setTask(updatedTask);
+        }
 
     }
 
