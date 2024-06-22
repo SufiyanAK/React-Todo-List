@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 function Todo() {
 
-    const [task, setTask] = useState([]);
+    const [task, setTask] = useState(['DCCN Theory Assignment']);
     const [newTask, setNewTask] = useState('');
 
     function handleInputChange(e) {
@@ -10,7 +10,6 @@ function Todo() {
     }
 
     function addTask() {
-
     }
 
     function deleteTask(index) {
